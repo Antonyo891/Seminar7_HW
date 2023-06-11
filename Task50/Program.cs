@@ -8,7 +8,7 @@
 17 -> такого числа в массиве нет*/
 using System;
 using static System.Console;
-int [] StringToInt() //возвращает введенные позиции через пробел в массив с проверкой необходимого количества чисел
+int[] StringToInt() //возвращает введенные позиции через пробел в массив с проверкой необходимого количества чисел
 {
     System.Console.WriteLine("Введите позицию элемента двумерного массива через пробел");
     string line = Console.ReadLine();
@@ -19,36 +19,36 @@ int [] StringToInt() //возвращает введенные позиции ч
         line = Console.ReadLine();
         ArrayString = line.Split(" ");
     }
-    int [] result = new int[ArrayString.Length];
+    int[] result = new int[ArrayString.Length];
     for (int i = 0; i < 2; i++) result[i] = int.Parse(ArrayString[i]);
     return result;
 }
-int [,] GetArray () // создает двумерный массив с рандомными элементами и количеством элементов
+int[,] GetArray() // создает двумерный массив с рандомными элементами и количеством элементов
 {
-    int line = new Random().Next(1,6);
-    int column = new Random().Next(1,10);
-    int[,] result = new int [line,column];
-    for (int i=0;i<line;i++)
+    int line = new Random().Next(1, 6);
+    int column = new Random().Next(1, 10);
+    int[,] result = new int[line, column];
+    for (int i = 0; i < line; i++)
     {
-        for (int j=0; j<column; j++) result[i,j] = new Random().Next(0,10);
+        for (int j = 0; j < column; j++) result[i, j] = new Random().Next(0, 10);
     }
     return result;
 }
-bool Element (int [,] array, int [] position) //проверяет есть ли такой элемент
+bool Element(int[,] array, int[] position) //проверяет есть ли такой элемент
 {
-    return position[0]<=array.GetLength(0)&&position[1]<=array.GetLength(1); 
+    return position[0] <= array.GetLength(0) && position[1] <= array.GetLength(1);
 }
-void PrintArray (int [,] array)
-{ for (int i = 0; i< array.GetLength(0); i++)
+void PrintArray(int[,] array)
 {
-    for (int j =0; j<array.GetLength(1);j++) Write($" {array[i,j]}");
-    WriteLine();
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++) Write($" {array[i, j]}");
+        WriteLine();
+    }
 }
-}
-
 Clear();
-int [] position = StringToInt();
-int [,] array = GetArray();
+int[] position = StringToInt();
+int[,] array = GetArray();
 PrintArray(array);
-if (Element(array,position)) WriteLine($"Элемент на позиции {position[0]};{position[1]} ==> {array[position[0],position[1]]}");
+if (Element(array, position)) WriteLine($"Элемент на позиции {position[0]};{position[1]} ==> {array[position[0], position[1]]}");
 else WriteLine("Такого элемента нет");
